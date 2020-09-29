@@ -1,3 +1,19 @@
 body {
-    background-color: rgb(96, 207, 170);
+    background-color: rgb(193, 148, 235);
+}
+ul {
+    list-style: none;
+}
+/* nav */
+.nav {
+    display: flex;
+    justify-content: flex-end;
+}
+.nav-list {
+    display: flex;
+    margin-right: 2rem; 
+}
+.nav-list a {
+    display: block;
+    padding: 2em;
 }
