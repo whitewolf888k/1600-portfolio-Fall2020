@@ -17,3 +17,9 @@ ul {
     display: block;
     padding: 2em;
 }
+/* welcome section */
+#welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
