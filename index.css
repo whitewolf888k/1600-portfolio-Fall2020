@@ -80,9 +80,12 @@ h1, h2 {
 .project-section h1, .project-section h2 {
     padding-bottom: 20px;
 }
+.project-title {
+    font-size: x-large;
+}
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 4rem;
     width: 100%;
     max-width: 1280px;
@@ -90,11 +93,15 @@ h1, h2 {
     margin: 0 auto;
     margin-bottom: 6rem;
 }
-.project {
-    background:#777;
+.project-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/*.project {
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     border-radius: 1px;
-}
+}*/
 .project-image {
     height: calc(100% - 6.8rem);
     width: 100%;
@@ -102,7 +109,10 @@ h1, h2 {
 }
 a {
     text-decoration: none;
-    color:whitesmoke
+    color:whitesmoke;
+}
+a img {
+    border-radius: 5%;
 }
 
 /* contact-section */
