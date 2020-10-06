@@ -97,6 +97,7 @@ h1, h2, p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    justify-self: center;
 }
 /*.project {
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
