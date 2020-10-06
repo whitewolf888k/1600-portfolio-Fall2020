@@ -28,7 +28,7 @@ h1{
 h2 {
     font-size: 1.9rem;
 }
-h1, h2 {
+h1, h2, p {
     font-family: 'Quicksand', sans-serif;
     color: rgb(255, 255, 254);
 }
