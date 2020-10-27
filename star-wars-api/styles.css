@@ -3,12 +3,17 @@
     box-sizing: border-box;
 }
 
-main {
+.mainHeader {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 1rem;
+}
+#main {
+    display:flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-
 figure {
     margin: 1rem;
 }

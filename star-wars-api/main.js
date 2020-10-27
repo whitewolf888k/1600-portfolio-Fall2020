@@ -1,43 +1,43 @@
 import { films } from './Data/films.js'
 import { people } from './Data/people.js'
+import { planets } from './Data/planets.js'
+import { species } from './Data/species.js'
 
-console.log(people.length)
+const mainContent = document.querySelector('#main')
 
-//console.log(films[0])
+const mainHeader = document.createElement('header')
+mainHeader.className = 'mainHeader'
+document.body.appendChild(mainHeader)
 
-//const filmList = document.querySelector('.filmList');
-// forEach type of loop:
-films.forEach(film => {
-    console.log(film.title)
-    filmList.textContent = film.title
-});
+const planetButton = document.createElement('button')
+planetButton. textContent = 'Planets'
+mainHeader.appendChild(planetButton)
 
-//'for...of' loop:
-const main = document.querySelector('main')
+const speciesButton = document.createElement('button')
+speciesButton. textContent = 'Species'
+mainHeader.appendChild(speciesButton)
 
-for (const film of film) {
-    let newImg = document.createElement('img') // new image instance 
-    newImg.src = 'https://starwars-visualguide.com/assets/img/characters/2.jpg' //set the source of it or nothing will show 
-    // now append the image to the DOM somehow
-    main.appendChild(newImg)
-    console.log(film.title)
-}
+const planetTypes = planets.filter(planets => planets.rotation_period === '24')
+console.log(planetTypes)
 
-//'for' loop:
+planetButton.addEventListener('click', event => {
+    planetTypes.forEach((element) => {
+    const charFigure = document.createElement('figure')
+    const charImg = document.createElement('img')
+    charImg.src = `https://starwars-visualguide.com/assets/img/planets/2.jpg`
+    const charCaption = document.createElement('figcaption')
+    charCaption.textContent = 'Alderaan'
 
-for (let step = 0; step < 7; step++) {
-    // runs 7 times, with values of step 0 through 6.
-    let figure = document.createElement('figure')
-    let figImg = document.createElement('img') 
-    figImg.src = `https://starwars-visualguide.com/assets/img/films/${step + 1}.jpg`
-    let figCaption = document.createElement('figcaption')
-    figCaption.textContent = flims[step].title
+    charFigure.appendChild(charImg)
+    charFigure.appendChild(charCaption)
 
-    figure.appendChild(figIgm)
-    figure.appendChild(figCaption)
+    mainContent.appendChild(charFigure)
+})
+})
 
-
-
-    console.log(films[step].title);
+function getLastNumber(url) {
+    console.log(url)
 
 }
+
+getLastNumber(url)
