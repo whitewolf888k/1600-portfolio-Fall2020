@@ -2,20 +2,30 @@
     margin: 0;
     box-sizing: border-box;
 }
+a {
+    text-decoration: none;
+    font-size: 1.8rem;
+}
 
+li {
+    list-style-type: none;
+}
 .mainHeader {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 1rem;
 }
-#main {
+header, footer {
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 figure {
     margin: 1rem;
+    border: 5px solid gold;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 figcaption {
