@@ -10,24 +10,22 @@ a {
 li {
     list-style-type: none;
 }
-.mainHeader {
+.container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 1rem;
+}
+#main {
+    margin: 8rem 5rem 0 10rem;
 }
 header, footer {
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-figure {
-    margin: 1rem;
-    border: 5px solid gold;
-    border-radius: 10px;
-    padding: 10px;
+header {
+    font-size: 2.5rem;
 }
+.button {
+    display: flex;
+    justify-content: space-around;
 
-figcaption {
-    text-align: center;
 }
