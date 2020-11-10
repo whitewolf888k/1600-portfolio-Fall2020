@@ -39,12 +39,12 @@ function populateNav(items, urlItem) {
         anchorWrap.href = '#'
         anchorWrap.addEventListener('click', event => {
             let itemName = event.target.textContent
-            const foundItem = items.find(subItem => subItem.name === itemName)
+            const foundItem = items.find(subItem => (subItem.name || subItem.title) === itemName)
             populateItemView(foundItem, urlItem)
         })
 
         let listItem = document.createElement('li')
-        listItem.textContent = item.name
+        listItem.textContent = item.name || item.title
 
         anchorWrap.appendChild(listItem)
         navList.appendChild(anchorWrap)
@@ -64,3 +64,5 @@ function populateItemView(itemData, urlItem) {
 
     itemView.appendChild(itemImg)
 }
+
+populateNav(films, 'films')
