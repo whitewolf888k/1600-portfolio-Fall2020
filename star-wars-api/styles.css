@@ -19,16 +19,18 @@ li {
     list-style-type: none;
 }
 .nav {
-    padding-left: 5%;
+    padding-left: 0 10px 0 10px;
 }
 .navList {
+    margin-top: 30px;
     padding: 10px;
 }
 .container {
     display: flex;
 }
 #main {
-    margin: 10% 10% 0 15%;
+    margin: 50px 100px;
+    margin-left: 250px;
 }
 img {
     border: solid 3px;

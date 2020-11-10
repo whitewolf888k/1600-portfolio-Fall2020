@@ -116,6 +116,10 @@ h1, h2, p {
     width: 420px;
     height: 300px;
 }
+.starwars {
+    width: 420px;
+    height: 330px;
+}
 a {
     text-decoration: none;
     color:whitesmoke;
