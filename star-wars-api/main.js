@@ -7,7 +7,6 @@ import { removeChildren, getLastNumber } from '../utils/index.js'
 const nav = document.querySelector('.nav')
 const navList = document.querySelector('.navList')
 const itemView = document.querySelector('#main')
-//const speciesView = document.querySelector('#main')
 const mainHeader = document.querySelector('.button')
 
 const dialog = document.querySelector('.modal')
@@ -26,12 +25,14 @@ speciesButton.textContent = 'Species'
 mainHeader.appendChild(speciesButton)
 
 planetButton.addEventListener('click', event => {
-    populateNav(planets, "plantes")
+    populateNav(planets, "planets")
 })
 
 speciesButton.addEventListener('click', event => {
     populateNav(species, "species")
 })
+
+populateNav
 
 function populateNav(items, urlItem) {
     removeChildren(navList)
@@ -54,7 +55,7 @@ function populateNav(items, urlItem) {
 }
 
 function populateItemView(itemData, urlItem) {
-    removeChildren(navList)
+    removeChildren(itemView)
     let itemImg = document.createElement('img')
     let itemNum = getLastNumber(itemData.url)
     itemImg.src = `https://starwars-visualguide.com/assets/img/${urlItem}/${itemNum}.jpg`
