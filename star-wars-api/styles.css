@@ -5,6 +5,8 @@
 a {
     text-decoration: none;
     font-size: 1.8rem;
+    color: gold;
+    padding: 1px;
 }
 
 li {
@@ -24,8 +26,10 @@ header, footer {
 header {
     font-size: 2.5rem;
 }
+h1 {
+    color: gold;
+}
 .button {
     display: flex;
     justify-content: space-around;
-
 }

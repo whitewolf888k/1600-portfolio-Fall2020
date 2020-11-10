@@ -63,27 +63,27 @@ populateNav(planets)
 
 speciesButton.addEventListener('click', event => {
 function populateNav(species) {
-    species.forEach(species => {
+    species.forEach(spec => {
         let anchorWrap = document.createElement('a')
         anchorWrap.herf = '#'
         anchorWrap.addEventListener('click', event => {
             let speciesName = event.target.textContent
-            const foundSpecies = people.find(specie => specie.name === speciesName)
+            const foundSpecies = species.find(specie => specie.name === speciesName)
             populateSpeciesView(foundSpecies)
         })
 
         let listItem = document.createElement('li')
-        listItem.textContent = species.name
+        listItem.textContent = spec.name
 
         anchorWrap.appendChild(listItem)
         navList.appendChild(anchorWrap)
         nav.appendChild(navList)
     })
 }
-function populateSpeciesView(specieData) {
+function populateSpeciesView(speciesData) {
     removeChildren(speciesView)
     let speciesImg = document.createElement('img')
-    let speciesNum = getLastNumber(specieData.url)
+    let speciesNum = getLastNumber(speciesData.url)
     speciesImg.src= `https://starwars-visualguide.com/assets/img/species/${speciesNum}.jpg`
     speciesImg.addEventListener('error', () => {
         speciesImg.hidden = true
