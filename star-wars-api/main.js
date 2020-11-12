@@ -2,7 +2,7 @@ import { films } from './Data/films.js'
 import { people } from './Data/people.js'
 import { planets } from './Data/planets.js'
 import { species } from './Data/species.js'
-import { removeChildren, getLastNumber } from '../utils/index.js'
+import { removeChildren, getLastNumber, addStarField } from '../utils/index.js'
 
 const nav = document.querySelector('.nav')
 const navList = document.querySelector('.navList')
@@ -66,3 +66,5 @@ function populateItemView(itemData, urlItem) {
 }
 
 populateNav(films, 'films')
+
+addStarField(document.querySelector('body'), 1000)
