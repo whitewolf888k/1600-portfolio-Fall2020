@@ -27,9 +27,7 @@ function populatePokeCard(pokemon) {
     let pokeScene = document.createElement('div')
     pokeScene.className = 'scene'
     let pokeCard = document.createElement('div')
-    pokeCard.className = 'card'
     let cardFront = document.createElement('div')
-    cardFront.className = ''
     let frontLabel = document.createElement('p')
     let frontImage = document.createElement('img')
     let cardBack = document.createElement('div')
@@ -55,4 +53,4 @@ function populatePokeCard(pokemon) {
      }
  }
 
-//loadPage()
+loadPage()
