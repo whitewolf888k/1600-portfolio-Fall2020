@@ -14,3 +14,31 @@
     margin: 10px;
     perspective: 600px;
 }
+
+.card {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+}
+
+.card_face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card_face--front {
+    background: cornflowerblue;
+}
+
+.card_face--back {
+    background: darkcyan;
+    transform: rotateY(180deg);
+}
+.card.is-flipped {
+    transform: rotateY(180deg);
+}
