@@ -11,7 +11,7 @@ async function getAPIData(url) {
 
 // Now, use the assync getAPIData function
 function loadPage() {
-    getAPIData(`https://pokeapi.co/api/v2/pokemon`).then
+    getAPIData(`https://pokeapi.co/api/v2/pokemon/`).then
         (async (data) => {
             for (const pokemon of data.results) {
                 await getAPIData(pokemon.url).then((pokeData) => {
@@ -37,30 +37,39 @@ const thirdGenButton = document.createElement('button')
 thirdGenButton.textContent = 'Third Generation'
 mainHeader.appendChild(thirdGenButton)
 
-/*firstGenButton.addEventListener('click', event => {
-    populatePokeCard(pokemon)
-})
+firstGenButton.addEventListener('click', () => {
+    getAPIData(`https://pokeapi.co/api/v2/pokemon`).then
+            (async (data) => {
+                for (const pokemon of data.results) {
+                    await getAPIData(pokemon.url).then((pokeData) => {
+                        populatePokeCard(pokeData)
+                    })
+                }
+            })
+    })
 
 secondGenButton.addEventListener('click', event => {
-    populatePokeCard(pokemon)
-})*/
+        getAPIData(`https://pokeapi.co/api/v2/pokemon`).then
+            (async (data) => {
+                for (const pokemon of data.results) {
+                    await getAPIData(`https://pokeapi.co/api/v2/pokemon/${itemNum}`).then((pokeData) => {
+                        populatePokeCard(pokeData)
+                    })
+                }
+            })
+    })
 
 thirdGenButton.addEventListener('click', event => {
-    getAPIData(`https://pokeapi.co/api/v2/pokemon`).then
-        (async (data) => {
-            //let backLabel = document.createElement('ul')
-            data.moves.forEach(move => {
-                //console.log(move.move.name)
-                let moveItem = document.createElement('li')
-                moveItem.textcontent = move.move.name
-                backLabel.appendChild(moveItem)
+    getAPIData(`https://pokeapi.co/api/v2/pokemon/`).then
+            (async (data) => {
+                for (const pokemon of data.results) {
+                    await getAPIData(`https://pokeapi.co/api/v2/pokemon/252`).then((pokeData) => {
+                        populatePokeCard(pokeData)
+                    })
+                }
             })
-            let thirdGenImage = document.createElement('img')
-            thirdGenImage.src = `../images/pokemon/1.png`
-            pokemonGrid.appendChild(backLabel)
-            pokemonGrid.appendChild(thirdGenImage)
-        })
-})
+    })
+
 
 
 function populatePokeCard(pokemon) {
@@ -132,7 +141,7 @@ function getImageFileName(pokemon) {
     }
 }
 
-loadPage()
+//loadPage()
 /*function Pokemon(name, height, weight, abilities) {
     this.name = name
     this.height = height
@@ -143,3 +152,13 @@ loadPage()
 
 let bulbasaur = new Pokemon('Bulbasaur', 5, 90, ['whip', 'slice'])
 console.log(bulbasaur)*/
+
+function getLastNumber(url) {
+    let end = url.lastIndexOf('/')
+    let start = end - 2
+    if (url.charAt(start) === '/') {
+        start++
+    }
+    return url.slice(start, end)
+}
+let itemNum = getLastNumber(itemData.url)
