@@ -21,7 +21,47 @@ function loadPage() {
         })
 }
 
+const mainHeader = document.querySelector('.button')
+
 const pokeGrid = document.querySelector('.pokeGrid')
+
+const firstGenButton = document.createElement('button')
+firstGenButton.textContent = 'First Generation'
+mainHeader.appendChild(firstGenButton)
+
+const secondGenButton = document.createElement('button')
+secondGenButton.textContent = 'Second Generation'
+mainHeader.appendChild(secondGenButton)
+
+const thirdGenButton = document.createElement('button')
+thirdGenButton.textContent = 'Third Generation'
+mainHeader.appendChild(thirdGenButton)
+
+/*firstGenButton.addEventListener('click', event => {
+    populatePokeCard(pokemon)
+})
+
+secondGenButton.addEventListener('click', event => {
+    populatePokeCard(pokemon)
+})*/
+
+thirdGenButton.addEventListener('click', event => {
+    getAPIData(`https://pokeapi.co/api/v2/pokemon`).then
+        (async (data) => {
+            let backLabel = document.createElement('ul')
+            data.moves.forEach(move => {
+                //console.log(move.move.name)
+                let moveItem = document.createElement('li')
+                moveItem.textcontent = move.move.name
+                backLabel.appendChild(moveItem)
+            })
+            let thirdGenImage = document.createElement('img')
+            thirdGenImage.src = `../images/pokemon/1.png`
+            pokemonGrid.appendChild(backLabel)
+            pokemonGrid.appendChild(thirdGenImage)
+        })
+})
+
 
 function populatePokeCard(pokemon) {
     let pokeScene = document.createElement('div')
@@ -33,8 +73,8 @@ function populatePokeCard(pokemon) {
         pokeCard.classList.toggle('is-flipped')
     })
 
-    pokeCard.appendChild(populateCardFront(pokemon))
-    pokeCard.appendChild(populateCardBack(pokemon))
+    pokeCard.appendChild(populateCardFront(pokemon));
+    pokeCard.appendChild(populateCardBack(pokemon));
     pokeScene.appendChild(pokeCard)
     pokeGrid.appendChild(pokeScene)
 }
@@ -55,20 +95,34 @@ function populateCardBack(pokemon) {
     let cardBack = document.createElement('div')
     cardBack.className = `card_face card_face--back`
     let backLabel = document.createElement('p')
-    backLabel.textContent = "I am the back"
-    /*getAPIData(`https://pokeapi.co/api/v2/pokemon`).then
+    backLabel.textContent = `Abilities:`
+    let abilityList = document.createElement('ul')
+    pokemon.abilities.forEach(ability => {
+        let abilityName = document.createElement('li')
+        abilityName.textContent = ability.ability.name
+        abilityList.appendChild(abilityName)
+    })
+    let movesLabel = document.createElement('h3')
+    movesLabel.textContent = 'Moves:'
+    let moveAccuracy = document.createElement('h4')
+    const mostAccurateMove = getBestAccuracyAndPower(pokemon.moves)
+    //moveAccuracy.textContent = `${mostAccurateMove.move.name}`
+    cardBack.appendChild(backLabel)
+    cardBack.appendChild(abilityList)
+    cardBack.appendChild(movesLabel)
+    cardBack.appendChild(moveAccuracy)
+    return cardBack
+        }
+
+function getBestAccuracyAndPower(pokemoves) {
+    return pokemoves.reduce((mostAccurate, move) => {
+        getAPIData(move.move.url).then
         (async (data) => {
-            let backLabel = document.createElement('ul')
-            data.moves.forEach(move => {
-                console.log(move.move.name)
-                let moveItem = document.createElement('li')
-                moveItem.textcontent = move.move.name
-                backLabel.appendChild(moveItem)
-            })*/
-            cardBack.appendChild(backLabel)
-            return cardBack
-        }//)
-//}
+            console.log(data)
+        })
+        return mostAccurate.accuracy > move.accuracy ? mostAccurate : move;
+      }, {});
+}
 
 function getImageFileName(pokemon) {
     if (pokemon.id < 10) {
@@ -78,6 +132,7 @@ function getImageFileName(pokemon) {
     }
 }
 
+loadPage()
 /*function Pokemon(name, height, weight, abilities) {
     this.name = name
     this.height = height
@@ -89,4 +144,3 @@ function getImageFileName(pokemon) {
 let bulbasaur = new Pokemon('Bulbasaur', 5, 90, ['whip', 'slice'])
 console.log(bulbasaur)*/
 
-loadPage()

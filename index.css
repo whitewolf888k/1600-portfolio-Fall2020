@@ -118,7 +118,11 @@ h1, h2, p {
 }
 .starwars {
     width: 420px;
-    height: 330px;
+    height: 300px;
+}
+.pokemon {
+    width: 420px;
+    height: 300px;
 }
 a {
     text-decoration: none;
