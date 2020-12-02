@@ -48,7 +48,7 @@ secondGenButton.addEventListener('click', event => {
 thirdGenButton.addEventListener('click', event => {
     getAPIData(`https://pokeapi.co/api/v2/pokemon`).then
         (async (data) => {
-            let backLabel = document.createElement('ul')
+            //let backLabel = document.createElement('ul')
             data.moves.forEach(move => {
                 //console.log(move.move.name)
                 let moveItem = document.createElement('li')
@@ -102,15 +102,15 @@ function populateCardBack(pokemon) {
         abilityName.textContent = ability.ability.name
         abilityList.appendChild(abilityName)
     })
-    let movesLabel = document.createElement('h3')
+    /*let movesLabel = document.createElement('h3')
     movesLabel.textContent = 'Moves:'
     let moveAccuracy = document.createElement('h4')
     const mostAccurateMove = getBestAccuracyAndPower(pokemon.moves)
-    //moveAccuracy.textContent = `${mostAccurateMove.move.name}`
+    moveAccuracy.textContent = `${mostAccurateMove.move.name}`*/
     cardBack.appendChild(backLabel)
     cardBack.appendChild(abilityList)
-    cardBack.appendChild(movesLabel)
-    cardBack.appendChild(moveAccuracy)
+    //cardBack.appendChild(movesLabel)
+    //cardBack.appendChild(moveAccuracy)
     return cardBack
         }
 
@@ -143,4 +143,3 @@ loadPage()
 
 let bulbasaur = new Pokemon('Bulbasaur', 5, 90, ['whip', 'slice'])
 console.log(bulbasaur)*/
-
