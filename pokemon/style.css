@@ -29,22 +29,29 @@ header {
     cursor: pointer;
     position: relative;
 }
-
+img {
+    padding-bottom: 20px;
+}
 .card_face {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    text-align: center;
+    border-radius: 10px;
 }
 
 .card_face--front {
     background: cornflowerblue;
+    padding-top: 50px;
+    text-align: center;
+    font-size: x-large;
 }
 
 .card_face--back {
     background: darkcyan;
     transform: rotateY(180deg);
+    text-align: center;
+    font-size: large;
 }
 .card.is-flipped {
     transform: rotateY(180deg);
