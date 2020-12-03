@@ -38,7 +38,7 @@ thirdGenButton.textContent = 'Third Generation'
 mainHeader.appendChild(thirdGenButton)
 
 firstGenButton.addEventListener('click', () => {
-    getAPIData(`https://pokeapi.co/api/v2/pokemon`).then
+    getAPIData(`https://pokeapi.co/api/v2/pokemon/`).then
             (async (data) => {
                 for (const pokemon of data.results) {
                     await getAPIData(pokemon.url).then((pokeData) => {
@@ -49,10 +49,10 @@ firstGenButton.addEventListener('click', () => {
     })
 
 secondGenButton.addEventListener('click', event => {
-        getAPIData(`https://pokeapi.co/api/v2/pokemon`).then
+        getAPIData(`https://pokeapi.co/api/v2/pokemon/?limit=9&offset=9"`).then
             (async (data) => {
                 for (const pokemon of data.results) {
-                    await getAPIData(`https://pokeapi.co/api/v2/pokemon/${itemNum}`).then((pokeData) => {
+                    await getAPIData(pokemon.url).then((pokeData) => {
                         populatePokeCard(pokeData)
                     })
                 }
@@ -60,10 +60,10 @@ secondGenButton.addEventListener('click', event => {
     })
 
 thirdGenButton.addEventListener('click', event => {
-    getAPIData(`https://pokeapi.co/api/v2/pokemon/`).then
+    getAPIData(`https://pokeapi.co/api/v2/pokemon/?limit=9&offset=9"`).then
             (async (data) => {
                 for (const pokemon of data.results) {
-                    await getAPIData(`https://pokeapi.co/api/v2/pokemon/252`).then((pokeData) => {
+                    await getAPIData(pokemon.url).then((pokeData) => {
                         populatePokeCard(pokeData)
                     })
                 }
@@ -111,15 +111,15 @@ function populateCardBack(pokemon) {
         abilityName.textContent = ability.ability.name
         abilityList.appendChild(abilityName)
     })
-    /*let movesLabel = document.createElement('h3')
+    let movesLabel = document.createElement('h3')
     movesLabel.textContent = 'Moves:'
-    let moveAccuracy = document.createElement('h4')
+    let moveAccuracy = document.createElement('p')
     const mostAccurateMove = getBestAccuracyAndPower(pokemon.moves)
-    moveAccuracy.textContent = `${mostAccurateMove.move.name}`*/
+    moveAccuracy.textContent = `${mostAccurateMove.move.name}`
     cardBack.appendChild(backLabel)
     cardBack.appendChild(abilityList)
-    //cardBack.appendChild(movesLabel)
-    //cardBack.appendChild(moveAccuracy)
+    cardBack.appendChild(movesLabel)
+    cardBack.appendChild(moveAccuracy)
     return cardBack
         }
 
