@@ -25,6 +25,14 @@ const mainHeader = document.querySelector('.button')
 
 const pokeGrid = document.querySelector('.pokeGrid')
 
+//const newButton = document.querySelector('#newPokemon')
+
+/*newButton.addEventListener('click', () => {
+    let pokeName = prompt("What's your new Pokemon's Name?")
+    populatePokeCard(createNewPokemon(pokeName))
+})*/
+
+
 const firstGenButton = document.createElement('button')
 firstGenButton.textContent = 'First Generation'
 mainHeader.appendChild(firstGenButton)
@@ -91,7 +99,7 @@ function populatePokeCard(pokemon) {
 function populateCardFront(pokemon) {
     let cardFront = document.createElement('div')
     cardFront.className = `card_face card_face--front`
-    let frontLabel = document.createElement('p')
+    let frontLabel = document.createElement('h2')
     let frontImage = document.createElement('img')
     frontLabel.textContent = pokemon.name
     frontImage.src = `../images/pokemon/${getImageFileName(pokemon)}.png`
@@ -142,7 +150,7 @@ function getImageFileName(pokemon) {
 }
 
 //loadPage()
-/*function Pokemon(name, height, weight, abilities) {
+function Pokemon(name, height, weight, abilities) {
     this.name = name
     this.height = height
     this.weight = weight
@@ -151,7 +159,7 @@ function getImageFileName(pokemon) {
 }
 
 let bulbasaur = new Pokemon('Bulbasaur', 5, 90, ['whip', 'slice'])
-console.log(bulbasaur)*/
+console.log(bulbasaur)
 
 function getLastNumber(url) {
     let end = url.lastIndexOf('/')
@@ -162,3 +170,7 @@ function getLastNumber(url) {
     return url.slice(start, end)
 }
 let itemNum = getLastNumber(itemData.url)
+
+function createNewPokemon(name) {
+    return new Pokemon(name, 450, 200, ['gorge', 'sleep', 'cough'])
+}

@@ -24,6 +24,9 @@ h3 {
     font-family:'Russo One', sans-serif;
     padding: 10px;
 }
+p {
+    font-family: 'Comfortaa', cursive;
+}
 ul {
     margin-bottom: 15px;
 }
@@ -41,9 +44,11 @@ li {
 button {
     padding: 10px;
     border-radius: 10px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     background-color: #FFDE00 ;
     font-family: 'Russo One', sans-serif;
+    border-style: none;
+    box-shadow: 2px 2px 5px black;
 
 }
 .pokeGrid {
@@ -82,7 +87,7 @@ img {
 }
 
 .card_face--front {
-    background: rgb(42, 173, 112);
+    background-image: url(/images/Poke-background.jpg);
     padding-top: 50px;
     text-align: center;
     font-size: x-large;
@@ -90,7 +95,7 @@ img {
 }
 
 .card_face--back {
-    background: rgb(91, 159, 238);
+    background-image: url(/images/Poke-back.jpg);
     transform: rotateY(180deg);
     text-align: center;
     font-size: large;
