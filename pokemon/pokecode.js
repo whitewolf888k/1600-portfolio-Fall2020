@@ -1,4 +1,6 @@
 // Reusable async function to fetch data from the provided url
+import { removeChildren } from '../utils/index.js'
+
 async function getAPIData(url) {
     try {
         const response = await fetch(url)
@@ -52,38 +54,33 @@ const thirdGenButton = document.createElement('button')
 thirdGenButton.textContent = 'Third Generation'
 mainHeader.appendChild(thirdGenButton)
 
-firstGenButton.addEventListener('click', () => {
-    getAPIData(`https://pokeapi.co/api/v2/pokemon/?limit=9&offset=9`).then
-            (async (data) => {
-                for (const pokemon of data.results) {
-                    await getAPIData(`https://pokeapi.co/api/v2/pokemon/1`).then((pokeData) => {
-                        populatePokeCard(pokeData)
-                    })
-                }
-            })
-    })
+firstGenButton.addEventListener('click', async (event) => {
+    removeChildren(pokeGrid)
+    for (let i = 0; i < 9; i++) {
+        await getAPIData(`https://pokeapi.co/api/v2/pokemon/${firstGenArray[i]}`).then((pokeData) => {
+            populatePokeCard(pokeData)
+        })
+    }
+})
 
-secondGenButton.addEventListener('click', event => {
-        getAPIData(`https://pokeapi.co/api/v2/pokemon/?limit=9&offset=9`).then
-            (async (data) => {
-                for (const pokemon of data.results) {
-                    await getAPIData(`https://pokeapi.co/api/v2/pokemon/152`).then((pokeData) => {
-                        populatePokeCard(pokeData)
-                    })
-                }
-            })
-    })
+secondGenButton.addEventListener('click', async (event) => {
+    removeChildren(pokeGrid)
+    for (let i = 0; i < 9; i++) {
+        await getAPIData(`https://pokeapi.co/api/v2/pokemon/${secGenArray[i]}`).then((pokeData) => {
+            populatePokeCard(pokeData)
+        })
+    } 
+})
 
-thirdGenButton.addEventListener('click', event => {
-    getAPIData(`https://pokeapi.co/api/v2/pokemon/?limit=9&offset=9`).then
-            (async (data) => {
-                for (const pokemon of data.results) {
-                    await getAPIData(`https://pokeapi.co/api/v2/pokemon/252`).then((pokeData) => {
-                        populatePokeCard(pokeData)
-                    })
-                }
-            })
-    })
+thirdGenButton.addEventListener('click', async (event) => {
+    removeChildren(pokeGrid)
+    for (let i = 0; i < 9; i++) {
+        await getAPIData(`https://pokeapi.co/api/v2/pokemon/${thirdGenArray[i]}`).then((pokeData) => {
+            populatePokeCard(pokeData)
+        })
+    }
+})
+
 
 
 
@@ -119,22 +116,30 @@ function populateCardBack(pokemon) {
     let cardBack = document.createElement('div')
     cardBack.className = `card_face card_face--back`
     let backLabel = document.createElement('h3')
-    backLabel.textContent = `Abilities:`
+    backLabel.textContent = `Type:`
+    let typeList = document.createElement('ul')
+    pokemon.types.forEach(type => {
+        let typeName = document.createElement('li')
+        typeName.textContent = type.type.name
+        typeList.appendChild(typeName)
+    })
+    let abilityLabel = document.createElement('h3')
+    abilityLabel.textContent = `Abilities:`
     let abilityList = document.createElement('ul')
     pokemon.abilities.forEach(ability => {
         let abilityName = document.createElement('li')
         abilityName.textContent = ability.ability.name
         abilityList.appendChild(abilityName)
     })
-    let movesLabel = document.createElement('h3')
+    /*let movesLabel = document.createElement('h3')
     movesLabel.textContent = 'Moves:'
     let moveAccuracy = document.createElement('p')
     const mostAccurateMove = getBestAccuracyAndPower(pokemon.moves)
-    moveAccuracy.textContent = `${mostAccurateMove.move.name}`
+    moveAccuracy.textContent = `${mostAccurateMove.move.name}`*/
     cardBack.appendChild(backLabel)
+    cardBack.appendChild(typeList)
+    cardBack.appendChild(abilityLabel)
     cardBack.appendChild(abilityList)
-    cardBack.appendChild(movesLabel)
-    cardBack.appendChild(moveAccuracy)
     return cardBack
         }
 
@@ -158,13 +163,13 @@ function getImageFileName(pokemon) {
     }
 }
 
-/*function pokeNumber(pokemon) {
-    if (pokemon.id < 10) {
-        return `${pokemon.id}`
-    } else {
-        return false
-    }
-}*/
+const firstGenArray = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+const secGenArray = [152, 153, 154, 155, 156, 157, 158, 159, 160]
+
+const thirdGenArray = [252, 253, 254, 255, 256, 257, 258, 259, 260]
+ 
+
 
 
 /*loadPage()
